@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
         imageContainer.className = 'image-container';
         imageContainer.innerHTML = `
             <div class="image-frame">
-                <img src="./screens.png" alt="Discord Screenshot">
+                <img src="./images/screens.png" alt="Discord Screenshot">
             </div>
         `;
 
