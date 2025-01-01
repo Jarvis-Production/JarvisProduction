@@ -4,188 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JarvisProduction</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-    <style>
-        :root {
-            --primary: #00bcd4;
-            --secondary: #ff4081;
-            --dark: #1a1a1a;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            background: var(--dark);
-            font-family: 'Arial', sans-serif;
-            color: white;
-            overflow-x: hidden;
-        }
-
-        .container {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            padding: 2rem;
-        }
-
-        .logo {
-            font-size: 4rem;
-            font-weight: bold;
-            margin-bottom: 2rem;
-            position: relative;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        .description {
-            max-width: 800px;
-            text-align: center;
-            line-height: 1.6;
-            font-size: 1.2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 1s ease-out forwards;
-            margin-top: 1rem;
-        }
-
-        .circle {
-            position: absolute;
-            border-radius: 50%;
-            background: var(--primary);
-            filter: blur(100px);
-            z-index: -1;
-        }
-
-        .circle-1 {
-            width: 300px;
-            height: 300px;
-            top: -150px;
-            left: -150px;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .circle-2 {
-            width: 200px;
-            height: 200px;
-            bottom: -100px;
-            right: -100px;
-            background: var(--secondary);
-            animation: float 8s ease-in-out infinite reverse;
-        }
-
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 10px var(--primary),
-                           0 0 20px var(--primary),
-                           0 0 30px var(--primary);
-            }
-            to {
-                text-shadow: 0 0 20px var(--primary),
-                           0 0 30px var(--primary),
-                           0 0 40px var(--primary);
-            }
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0); }
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .model-container {
-            width: 400px;
-            height: 400px;
-            margin: 2rem auto;
-            position: relative;
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            overflow: hidden;
-            background: rgba(0, 188, 212, 0.1);
-            box-shadow: 0 0 20px var(--primary);
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="circle circle-1"></div>
-        <div class="circle circle-2"></div>
-        
-        <h1 class="logo">JarvisProduction</h1>
-        
-        <div class="model-container" id="model-container"></div>
-        
-        <p class="description">JarvisProduction - моя собственная вымышленная компания, вдохновлённая ИИ, а также Тони Старком из фильма "Железный Человек"</p>
+    <div class="background-effects">
+        <div class="scan-lines"></div>
+        <div class="tech-overlay"></div>
     </div>
 
-    <script>
-        const container = document.getElementById('model-container');
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ alpha: true });
-        renderer.setSize(container.clientWidth, container.clientHeight);
-        container.appendChild(renderer.domElement);
+    <div class="iron-man-suit">
+        <div class="suit-container">
+            <video autoplay loop muted playsinline>
+                <source src="D:/Site/ironman hud.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
 
-        const frontLight = new THREE.DirectionalLight(0x00bcd4, 1);
-        frontLight.position.set(0, 0, 2);
-        scene.add(frontLight);
+    <div class="container">
+        <div class="jarvis-interface">
+            <h1 class="glitch" data-text="JarvisProduction">JarvisProduction</h1>
+            <p class="subtitle">Добро пожаловать в мир инновационных технологий</p>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#applications">Приложения</a></li>
+                    <li><a href="#vpn">VPN Сервис</a></li>
+                    <li><a href="#about">О нас</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 
-        const backLight = new THREE.DirectionalLight(0xffffff, 0.5);
-        backLight.position.set(0, 0, -2);
-        scene.add(backLight);
-
-        const topLight = new THREE.DirectionalLight(0xffffff, 0.5);
-        topLight.position.set(0, 2, 0);
-        scene.add(topLight);
-
-        scene.add(new THREE.AmbientLight(0xffffff, 0.5));
-
-        const loader = new THREE.GLTFLoader();
-        let model;
-        loader.load(
-            'D:/github-site/model/tony_stark.glb', 
-            (gltf) => {
-                model = gltf.scene;
-                model.scale.set(0.5, 0.5, 0.5);
-                const box = new THREE.Box3().setFromObject(model);
-                const center = box.getCenter(new THREE.Vector3());
-                model.position.sub(center);
-                scene.add(model);
-            },
-            (xhr) => {
-                console.log((xhr.loaded / xhr.total * 100) + '% загружено');
-            },
-            (error) => {
-                console.error('Ошибка при загрузке модели:', error);
-            }
-        );
-
-        camera.position.z = 5;
-
-        function animate() {
-            requestAnimationFrame(animate);
-            if (model) {
-                model.rotation.y += 0.005;
-            }
-            renderer.render(scene, camera);
-        }
-        animate();
-
-        window.addEventListener('resize', () => {
-            const width = container.clientWidth;
-            const height = container.clientHeight;
-            camera.aspect = width / height;
-            camera.updateProjectionMatrix();
-            renderer.setSize(width, height);
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
-</html>
+</html> 

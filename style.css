@@ -1,0 +1,1010 @@
+:root {
+    --primary-color: #2196f3;
+    --secondary-color: #64b5f6;
+    --accent-color: #ff3d00;
+    --text-color: #e3f2fd;
+    --hologram-color: rgba(33, 150, 243, 0.7);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    font-family: 'Rajdhani', sans-serif;
+    color: var(--text-color);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Фоновые эффекты */
+.background-effects {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.scan-lines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(33, 150, 243, 0.03) 0px,
+        rgba(33, 150, 243, 0.03) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+}
+
+.tech-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(33, 150, 243, 0.1), transparent 70%);
+    pointer-events: none;
+}
+
+/* Основной контейнер */
+.container {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+/* Интерфейс Джарвиса */
+.jarvis-interface {
+    background: rgba(13, 71, 161, 0.15);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--hologram-color);
+    border-radius: 20px;
+    padding: 3rem;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(33, 150, 243, 0.2);
+    animation: glow 2s ease-in-out infinite alternate;
+    max-width: 800px;
+    width: 90%;
+}
+
+/* Заголовок */
+.glitch {
+    font-size: 3.5em;
+    font-weight: 700;
+    color: var(--text-color);
+    text-shadow: 
+        0 0 10px var(--primary-color),
+        0 0 20px var(--primary-color),
+        0 0 30px var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    color: var(--secondary-color);
+    margin-bottom: 2rem;
+}
+
+/* Навигация */
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.main-nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid var(--hologram-color);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    background: rgba(33, 150, 243, 0.1);
+}
+
+.main-nav ul li a:hover {
+    background: var(--hologram-color);
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(33, 150, 243, 0.4);
+}
+
+/* Анимации */
+@keyframes glow {
+    from {
+        box-shadow: 0 0 20px rgba(33, 150, 243, 0.2);
+    }
+    to {
+        box-shadow: 0 0 30px rgba(33, 150, 243, 0.4);
+    }
+}
+
+/* Медиа-запросы */
+@media (max-width: 768px) {
+    .jarvis-interface {
+        padding: 2rem;
+        margin: 1rem;
+    }
+
+    .glitch {
+        font-size: 2.5em;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Удаляем стили матричного текста */
+.matrix-text {
+    display: none; /* или можно полностью удалить этот блок */
+}
+
+/* Обновляем стили для костюма */
+.iron-man-suit {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.25;
+}
+
+.suit-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    animation: floatSuit 4s ease-in-out infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.suit-container img {
+    max-width: 85%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 20px var(--hologram-color));
+}
+
+@keyframes floatSuit {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Свечение вокруг костюма */
+.suit-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 130%;
+    height: 130%;
+    background: radial-gradient(circle at center, var(--hologram-color) 0%, transparent 70%);
+    opacity: 0.12;
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.12;
+    }
+    50% {
+        opacity: 0.2;
+    }
+}
+
+/* Добавляем новые стили (добавьте их к существующим) */
+.about-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.matrix-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.about-text-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    text-align: center;
+    width: 80%;
+    max-width: 800px;
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards 0.5s;
+}
+
+.about-text {
+    color: #fff;
+    font-size: 24px;
+    line-height: 1.5;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid rgba(33, 150, 243, 0.3);
+    box-shadow: 0 0 20px rgba(33, 150, 243, 0.2);
+}
+
+/* Обновляем стили для кнопки закрытия */
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(33, 150, 243, 0.2);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(33, 150, 243, 0.3);
+}
+
+.close-button:hover {
+    background: rgba(33, 150, 243, 0.4);
+    transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Добавляем новые стили (добавить к существующим) */
+.vpn-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.coming-soon {
+    color: #0f0;
+    font-size: 48px;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.dots {
+    display: inline-block;
+    animation: dotsAnimation 1.5s infinite;
+    opacity: 0;
+}
+
+@keyframes dotsAnimation {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Стили для слова "впн" */
+.vpn-text {
+    color: #0066ff;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.vpn-text:hover {
+    color: #0099ff;
+    text-shadow: 0 0 5px rgba(0, 102, 255, 0.5);
+}
+
+.globe-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    background: #000;
+    overflow: hidden;
+    padding: 2rem;
+}
+
+.ascii-globe {
+    color: #0f0;
+    font-size: 14px;
+    line-height: 1;
+    white-space: pre;
+    text-shadow: 0 0 5px currentColor;
+    font-family: 'Courier New', monospace;
+    transform: scale(1.2);
+    transition: color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.vpn-text-container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid #0f0;
+    max-width: 800px;
+    animation: fadeIn 0.5s ease forwards 0.5s;
+}
+
+.vpn-text {
+    color: #fff;
+    font-size: 24px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.vpn-link {
+    color: #00f;
+    text-decoration: none;
+    border-bottom: 2px solid #00f;
+    padding-bottom: 2px;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 10px #00f;
+    position: relative;
+}
+
+.vpn-link:hover {
+    color: #0ff;
+    border-bottom-color: #0ff;
+    text-shadow: 0 0 15px #0ff;
+}
+
+.vpn-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #00f;
+    box-shadow: 0 0 10px #00f;
+    animation: glow 1.5s infinite;
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px #00f;
+    }
+    50% {
+        box-shadow: 0 0 15px #00f;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.8;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(0.85);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Добавляем эффект сканирования */
+.globe-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(0, 255, 0, 0.5);
+    box-shadow: 0 0 10px #0f0;
+    animation: scan 2s linear infinite;
+}
+
+@keyframes scan {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+/* Добавляем эффект терминала */
+.vpn-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15) 0px,
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+}
+
+/* Добавляем эффект мерцания */
+@keyframes textFlicker {
+    0%, 100% {
+        opacity: 1;
+        text-shadow: 0 0 8px currentColor;
+    }
+    50% {
+        opacity: 0.8;
+        text-shadow: 0 0 20px currentColor;
+    }
+}
+
+.ascii-globe {
+    animation: textFlicker 2s infinite;
+}
+
+/* Добавляем медиа-запрос для адаптивности */
+@media (min-width: 1200px) {
+    .ascii-globe {
+        font-size: 16px;
+        transform: scale(1.4);
+    }
+}
+
+@media (max-width: 768px) {
+    .ascii-globe {
+        font-size: 10px;
+        transform: scale(1);
+    }
+}
+
+/* Стили для секции приложений */
+.apps-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    font-family: 'Courier New', monospace;
+    overflow: hidden;
+}
+
+.content-container {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 200px);
+    overflow: visible;
+}
+
+.image-container {
+    position: absolute;
+    left: -400px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 90%;
+}
+
+.image-frame {
+    border: 3px solid #0f0;
+    border-radius: 10px;
+    padding: 10px;
+    background: rgba(0, 255, 0, 0.1);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+    transform: scale(1.1);
+    transform-origin: left center;
+}
+
+.image-frame img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    display: block;
+}
+
+.text-info {
+    position: absolute;
+    right: 20px;
+    top: 45%;
+    transform: translateY(-50%);
+    color: #0f0;
+    z-index: 10;
+    width: 300px;
+}
+
+.text-info h2 {
+    white-space: nowrap;
+    margin-bottom: 30px;
+}
+
+.buttons-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 20px;
+}
+
+.download-button {
+    white-space: nowrap;
+}
+
+.secondary-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+}
+
+.secondary-buttons .download-button {
+    box-shadow: none;
+    transition: background 0.3s ease;
+}
+
+.secondary-buttons .download-button:hover {
+    background: rgba(0, 255, 0, 0.1);
+    transform: none;
+    box-shadow: none;
+}
+
+.secondary-buttons .button-glow {
+    display: none;
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+}
+
+.main-button:hover {
+    background: rgba(0, 255, 0, 0.1);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+.button-glow {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 255, 0, 0.2),
+        transparent
+    );
+    animation: button-shine 3s infinite;
+}
+
+.apps-text-container {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    color: #0f0;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.cmd-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.cursor {
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes button-shine {
+    0% {
+        left: -100%;
+    }
+    20% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes blink {
+    from, to {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Стили для кнопки закрытия */
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    color: #0f0;
+    background: transparent;
+    border: 1px solid #0f0;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.close-button:hover {
+    background: rgba(0, 255, 0, 0.2);
+    transform: scale(1.1);
+}
+
+/* Эффект старого монитора */
+.apps-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15) 0px,
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+}
+
+/* Обновленные стили */
+.content-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    color: #0f0;
+    padding: 20px;
+}
+
+.text-info h2 {
+    font-size: 36px;
+    margin: 0 0 30px 0;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    animation: glow 2s ease-in-out infinite;
+    width: 100%;
+    text-align: center;
+}
+
+.image-container {
+    flex: 0 0 45%;
+    padding: 20px;
+}
+
+.image-frame {
+    border: 3px solid #0f0;
+    border-radius: 10px;
+    padding: 10px;
+    background: rgba(0, 255, 0, 0.1);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3),
+                inset 0 0 20px rgba(0, 255, 0, 0.2);
+}
+
+.image-frame img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    display: block;
+}
+
+.apps-text-container {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    color: #0f0;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.cmd-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.cursor {
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(0, 255, 0, 0.8),
+                     0 0 30px rgba(0, 255, 0, 0.6);
+    }
+}
+
+/* Добавляем стили для кнопки скачивания */
+.download-button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 40px;
+    font-size: 24px;
+    color: #0f0;
+    background: transparent;
+    border: 2px solid #0f0;
+    border-radius: 5px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.download-button:hover {
+    background: rgba(0, 255, 0, 0.1);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+.button-glow {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 255, 0, 0.2),
+        transparent
+    );
+    animation: button-shine 3s infinite;
+}
+
+@keyframes button-shine {
+    0% {
+        left: -100%;
+    }
+    20% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Добавляем новые стили для кнопок */
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.download-button {
+    display: inline-block;
+    padding: 15px 40px;
+    font-size: 24px;
+    color: #0f0;
+    background: transparent;
+    border: 2px solid #0f0;
+    border-radius: 5px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.secondary-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+}
+
+.secondary-buttons .download-button {
+    box-shadow: none;
+    transition: background 0.3s ease;
+}
+
+.secondary-buttons .download-button:hover {
+    background: rgba(0, 255, 0, 0.1);
+    transform: none;
+    box-shadow: none;
+}
+
+.secondary-buttons .button-glow {
+    display: none;
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+}
+
+.main-button:hover {
+    background: rgba(0, 255, 0, 0.1);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+.button-glow {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 255, 0, 0.2),
+        transparent
+    );
+    animation: button-shine 3s infinite;
+}
+
+@keyframes button-shine {
+    0% {
+        left: -100%;
+    }
+    20% {
+        left: 100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.text-info {
+    flex: 0 0 45%;
+    color: #0f0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.text-info h2 {
+    font-size: 36px;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* Добавляем стили для Coming Soon overlay */
+.coming-soon-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1100;
+}
+
+.coming-soon-content {
+    color: #0f0;
+    font-size: 48px;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.dots {
+    display: inline-block;
+    animation: dotsAnimation 1.5s infinite;
+}
+
+@keyframes dotsAnimation {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Обновляем стиль для кнопки */
+.vpn-button {
+    cursor: pointer;
+}
+
+/* Остальные стили остаются без изменений */
