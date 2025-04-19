@@ -10,6 +10,22 @@ document.addEventListener('DOMContentLoaded', () => {
         jarvisInterface.style.transform = 'translateY(0)';
     }, 500);
 
+    // Плавная прокрутка для навигации
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                window.scrollTo({
+                    top: targetSection.offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
     // Эффект при наведении на ссылки
     const navLinks = document.querySelectorAll('.main-nav a');
     navLinks.forEach(link => {
@@ -221,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
         imageContainer.className = 'image-container';
         imageContainer.innerHTML = `
             <div class="image-frame">
-                <img src="./images/screens.png" alt="Discord Screenshot">
+                <img src="D:/Site/screens.png" alt="Discord Screenshot">
             </div>
         `;
 
